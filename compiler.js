@@ -20,13 +20,15 @@ function main() {
         return;
     }
 
-    fs.readdirSync(process.argv[3]).forEach(function(file) {
+    fs.readdirSync(process.argv[2]).forEach(function(file) {
         if (file.endsWith('.sass'))
             sassFiles.push(file);
     });
 
     if (sassFiles.length > 0)
-        status = compile(process.argv[2], process.argv[3], sassFiles);
+        status = compile(process.argv[3], process.argv[2], sassFiles);
+    else
+        console.log('Не выбран ни один файл');
 
     if (status)
         console.log('Compilation successful!');
